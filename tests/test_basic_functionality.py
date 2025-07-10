@@ -1,9 +1,9 @@
+from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
-from django.contrib.auth.models import User
 
 
-class BasicFunctionalityTests(TestCase):
+class ManadocBasicTests(TestCase):
     def setUp(self):
         # Create a user for testing
         self.user = User.objects.create_user(
@@ -22,6 +22,6 @@ class BasicFunctionalityTests(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_root_url_returns_200(self):
-        response = self.client.get("/")
-        print(response.content)
+        response = self.client.get(reverse("home"))
         self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Controlled documentation")
