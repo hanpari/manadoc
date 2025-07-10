@@ -1,0 +1,27 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/venv/bin/python",
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.djangoEnabled": true,
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}",
+    "${workspaceFolder}/yourapp"
+  ],
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintArgs": [
+    "--load-plugins",
+    "pylint_django"
+  ],
+  "python.formatting.provider": "black",
+  "editor.formatOnSave": true,
+  "editor.tabSize": 4,
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/*.pyc": true,
+    "**/.DS_Store": true
+  },
+  "terminal.integrated.env.linux": {
+    "DJANGO_SETTINGS_MODULE": "yourproject.settings"
+  },
+  "python.envFile": "${workspaceFolder}/.env"
+}
