@@ -2,5 +2,9 @@
     "recommendations": [
         "junstyle.vscode-django-support",
         "bibhasdn.django-html",
+        "ms-python.black-formatter",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.isort",
     ]
 }
