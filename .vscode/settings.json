@@ -1,18 +1,5 @@
 {
   "python.defaultInterpreterPath": "${workspaceFolder}/venv/bin/python",
-  "python.analysis.typeCheckingMode": "basic",
-  "python.analysis.djangoEnabled": true,
-  "python.analysis.extraPaths": [
-    "${workspaceFolder}",
-    "${workspaceFolder}/yourapp"
-  ],
-  "python.linting.enabled": true,
-  "python.linting.pylintEnabled": true,
-  "python.linting.pylintArgs": [
-    "--load-plugins",
-    "pylint_django"
-  ],
-  "python.formatting.provider": "black",
   "editor.formatOnSave": true,
   "editor.tabSize": 4,
   "files.exclude": {
@@ -32,5 +19,7 @@
     "test_*.py"
   ],
   "python.testing.pytestEnabled": false,
-  "python.testing.unittestEnabled": true
+  "python.testing.unittestEnabled": true,
+  "cSpell.language": "en,cs"
+  // For Django-specific IntelliSense, ensure you have a pyrightconfig.json file in your workspace.
 }

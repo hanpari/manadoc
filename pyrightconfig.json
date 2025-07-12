@@ -1,0 +1,21 @@
+{
+    "include": [
+        "manage.py",
+        "app",
+        "apps",
+        "project",
+        "tests"
+    ],
+    "exclude": [
+        "**/migrations",
+        "**/__pycache__",
+        ".venv",
+        "venv"
+    ],
+    "pythonVersion": "3.12",
+    "typeCheckingMode": "basic",
+    "reportMissingImports": true,
+    "reportMissingTypeStubs": false,
+    "useLibraryCodeForTypes": true,
+    "django": true
+}
