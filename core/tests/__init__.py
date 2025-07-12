@@ -1,8 +1,7 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
-
-from ..models import Document
-from ...shared import FAKE_PASSWORD
+from shared import FAKE_PASSWORD
+from core.models import Document
 
 
 class BasicCoreTests(TestCase):
