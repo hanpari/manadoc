@@ -55,8 +55,7 @@ Dodržujte standardy PEP 8. Doporučené nástroje:
 Před odesláním změn spusťte:
 
 ```bash
-black .
-flake8 .
+pre-commit run --all-files
 ```
 
 ## 🧬 Pull request proces

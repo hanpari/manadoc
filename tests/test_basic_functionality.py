@@ -1,13 +1,14 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
+from ..shared import FAKE_PASSWORD
 
 
 class ManadocBasicTests(TestCase):
     def setUp(self):
         # Create a user for testing
         self.user = User.objects.create_user(
-            username="testuser", password="testpassword", is_staff=True
+            username="testuser", password=FAKE_PASSWORD, is_staff=True
         )
 
     def test_admin_page(self):
@@ -17,7 +18,7 @@ class ManadocBasicTests(TestCase):
         )  # Redirect to login if not authenticated
 
     def test_admin_page_after_login(self):
-        self.client.login(username="testuser", password="testpassword")
+        self.client.login(username="testuser", password=FAKE_PASSWORD)
         response = self.client.get(reverse("admin:index"))
         self.assertEqual(response.status_code, 200)
 

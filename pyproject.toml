@@ -5,8 +5,19 @@ description = "manadoc is a controlled documentation system for small businesses
 authors = [{ name = "Hanpari" }]
 license = "MIT"
 
+[tool.black]
+line-length = 80
+target-version = ['py311']  # or use your actual Python version
+skip-string-normalization = true
+
 [tool.flake8]
-exclude = [".venv", "migrations", "__pycache__", "settings.py"]
+exclude = [
+            ".venv",
+            "migrations",
+            "__pycache__",
+            "settings.py",
+            "manage.py",
+            ]
 max-line-length = 88
 
 [tool.isort]
@@ -22,3 +33,4 @@ omit = [
 [tool.coverage.report]
 show_missing = true
 skip_covered = true
+
