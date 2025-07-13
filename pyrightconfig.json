@@ -1,10 +1,9 @@
 {
     "include": [
-        "manage.py",
-        "app",
-        "apps",
-        "project",
-        "tests"
+        "core",
+        "shared",
+        "tests",
+        "manadoc"
     ],
     "exclude": [
         "**/migrations",
@@ -13,11 +12,13 @@
         "venv"
     ],
     "pythonVersion": "3.12",
-    "typeCheckingMode": "standard",
+    "typeCheckingMode": "basic",
     "reportMissingImports": true,
     "reportMissingTypeStubs": false,
     "useLibraryCodeForTypes": true,
     "django": true,
     "venvPath": ".",
     "venv": ".venv",
+    "python.analysis.autoSearchPaths": false,
+    "python.analysis.diagnosticMode": "workspace",
 }

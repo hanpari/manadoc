@@ -10,3 +10,6 @@ alias pml="python manage.py loaddata"
 alias pme="python manage.py dumpdata"
 alias pmsq="python manage.py sqlmigrate"
 alias pmsql="python manage.py dbshell"
+
+# Miscellaneous aliases
+alias pcra="pre-commit run --all-files"

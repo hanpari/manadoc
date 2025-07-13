@@ -33,5 +33,4 @@
     "tests",
     "misc",
   ],
-  // For Django-specific IntelliSense, ensure you have a pyrightconfig.json file in your workspace.
 }
