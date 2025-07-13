@@ -1,0 +1,32 @@
+name: Pyright
+
+on: [push, pull_request]
+
+jobs:
+  pyright:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Create virtualenv and install dependencies
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+
+      - name: Set up Node.js for Pyright
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Pyright
+        run: npm install -g pyright
+
+      - name: Run Pyright type check
+        run: pyright .

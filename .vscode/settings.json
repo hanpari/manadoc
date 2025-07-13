@@ -26,6 +26,7 @@
   "python.testing.unittestEnabled": true,
   "cSpell.language": "en,cs",
   "conventionalCommits.scopes": [
+    "config",
     "models",
     "templates",
     "admin",

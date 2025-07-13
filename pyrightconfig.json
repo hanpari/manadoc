@@ -17,5 +17,7 @@
     "reportMissingImports": true,
     "reportMissingTypeStubs": false,
     "useLibraryCodeForTypes": true,
-    "django": true
+    "django": true,
+    "venvPath": ".",
+    "venv": ".venv",
 }
