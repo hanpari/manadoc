@@ -1,13 +1,15 @@
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 from shared import FAKE_PASSWORD
+
+User = get_user_model()
 
 
 class ManadocBasicTests(TestCase):
     def setUp(self):
         # Create a user for testing
-        self.user = User.objects.create_user(
+        self.user = User.objects.create_user(  # type: ignore
             username="testuser", password=FAKE_PASSWORD, is_staff=True
         )
 
