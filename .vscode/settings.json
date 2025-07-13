@@ -1,4 +1,8 @@
 {
+    "editor.rulers": [80],
+    "editor.wrappingIndent": "same",
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
   "python.defaultInterpreterPath": "${workspaceFolder}/venv/bin/python",
   "editor.formatOnSave": true,
   "editor.tabSize": 4,
@@ -20,6 +24,13 @@
   ],
   "python.testing.pytestEnabled": false,
   "python.testing.unittestEnabled": true,
-  "cSpell.language": "en,cs"
+  "cSpell.language": "en,cs",
+  "conventionalCommits.scopes": [
+    "models",
+    "templates",
+    "admin",
+    "tests",
+    "misc",
+  ],
   // For Django-specific IntelliSense, ensure you have a pyrightconfig.json file in your workspace.
 }

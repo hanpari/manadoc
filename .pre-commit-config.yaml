@@ -1,26 +1,31 @@
 repos:
   - repo: https://github.com/psf/black
-    rev: 24.3.0
+    rev: 25.1.0
     hooks:
       - id: black
         language_version: python3
         additional_dependencies: ['click>=8.0.0']
 
   - repo: https://github.com/pycqa/flake8
-    rev: 7.0.0
+    rev: 7.3.0
     hooks:
       - id: flake8
         additional_dependencies:
           - flake8-bugbear
           - flake8-comprehensions
 
+  - repo: https://github.com/ComPWA/pyright-pre-commit
+    rev: v1.1.403  # Use latest stable version
+    hooks:
+      - id: pyright
+
   - repo: https://github.com/Yelp/detect-secrets
-    rev: v1.4.0
+    rev: v1.5.0
     hooks:
       - id: detect-secrets
 
   - repo: https://github.com/PyCQA/bandit
-    rev: 1.7.5  # use the latest stable version
+    rev: 1.8.6  # use the latest stable version
     hooks:
       - id: bandit
         args: ["--quiet", "--severity-level", "medium" ]  # optional: silences info-level output
