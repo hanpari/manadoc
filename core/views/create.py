@@ -1,20 +1,17 @@
-from django.http import HttpResponse
-from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView as DjangoCreateView
-
+from django.views.generic.edit import CreateView
+from django.forms import ModelForm
 from ..models.document import Document
 
 
-class CreateView(DjangoCreateView):
+class DocumentForm(ModelForm):
+    class Meta:
+        model = Document
+        fields = ['title', 'content', "author"]
+
+
+class DocumentCreateView(CreateView):
     model = Document
-    fields = ["title", "content"]
+    form_class = DocumentForm
     success_url = reverse_lazy("home")
-    template_name = "core/create.html"
-
-    def get(self, request, *args, **kwargs) -> HttpResponse:
-        return render(request, self.template_name)  # type: ignore
-
-    def post(self, request, *args, **kwargs) -> HttpResponse:
-
-        return render(request, template_name=self.template_name)  # type: ignore
+    template_name = "core/create_document.html"

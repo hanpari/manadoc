@@ -22,6 +22,10 @@ from core import views
 
 urlpatterns = [
     path("", views.index, name="home"),
-    path("create", views.CreateView.as_view(), name="create"),
+    path(
+        "create-document",
+        views.DocumentCreateView.as_view(),
+        name="create_document",
+    ),
     path("admin/", admin.site.urls),
 ]

@@ -1,0 +1,12 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+  Create a new documentation page<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <a href="{% url 'home' %}">Back to index</a>
+{% endblock %}
