@@ -3,7 +3,18 @@
 {% block content %}
   Controlled documentation
 
-  odkaz
+  {% for document in documents %}
+  <br>
+  <a href="{% url 'update_document' document.pk %}">Document {{document.title}}</a>
+  {% empty %}
+    No documents
+  {% endfor %}
+
+  
+  
+  
+  <br>
  <a href="{% url 'create_document' %}">Create</a>
+
 
 {% endblock %}

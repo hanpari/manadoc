@@ -21,11 +21,16 @@ from django.urls import path
 from core import views
 
 urlpatterns = [
-    path("", views.index, name="home"),
+    path("", views.DocumentListView.as_view(), name="home"),
     path(
         "create-document",
         views.DocumentCreateView.as_view(),
         name="create_document",
+    ),
+    path(
+        "update-document/<int:pk>/edit",
+        views.DocumentUpdateView.as_view(),
+        name="update_document",
     ),
     path("admin/", admin.site.urls),
 ]
