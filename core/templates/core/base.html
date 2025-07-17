@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
+    {% if user.is_authenticated %}
+      Logged as {{ user.username }}
+    {% else %}
+      Login <a href="{% url 'login' %}">here</a>
+    {% endif %}
+
     {% block content %}
       <h1>Welcome to the Documentation</h1>
     {% endblock %}

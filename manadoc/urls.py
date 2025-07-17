@@ -15,7 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+from django import template
 from django.contrib import admin
+from django.contrib.auth.views import LoginView
 from django.urls import path
 
 from core import views
@@ -36,6 +38,11 @@ urlpatterns = [
         "delete-document/<int:pk>/delete",
         views.DocumentDeleteView.as_view(),
         name="delete_document",
+    ),
+    path(
+        "login",
+        LoginView.as_view(template_name="core/login.html"),
+        name="login",
     ),
     path("admin/", admin.site.urls),
 ]
