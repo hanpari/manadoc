@@ -1,18 +1,29 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
-  Controlled documentation
+  <h1>Controlled documentation</h1>
+
+  {% if messages %}
+  {% for message in messages %}
+    {{message}}
+  {% endfor %}
+  {% endif %}
+
 
   {% for document in documents %}
-  <br>
-  <a href="{% url 'update_document' document.pk %}">Document {{document.title}}</a>
+  <ul>
+    <li>
+      {{document.title}}
+      <a href="{% url 'update_document' document.pk %}"> Edit </a>
+      <a href="{% url 'delete_document' document.pk %}"> Delete </a>
+    </li>
+
+  </ul>
+
   {% empty %}
-    No documents
+    <p>No documents</p>
   {% endfor %}
 
-  
-  
-  
   <br>
  <a href="{% url 'create_document' %}">Create</a>
 

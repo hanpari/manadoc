@@ -32,5 +32,10 @@ urlpatterns = [
         views.DocumentUpdateView.as_view(),
         name="update_document",
     ),
+    path(
+        "delete-document/<int:pk>/delete",
+        views.DocumentDeleteView.as_view(),
+        name="delete_document",
+    ),
     path("admin/", admin.site.urls),
 ]

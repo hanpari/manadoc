@@ -1,0 +1,12 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+  Delete {{document}}
+  
+  <form method="post">
+    {% csrf_token %}
+  <button type="submit">Submit</button>
+  </form>
+
+  <a href="{% url 'home' %}">Back to index</a>
+{% endblock %}

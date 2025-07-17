@@ -1,6 +1,17 @@
+from django.contrib import messages
+from django.contrib.auth.mixins import UserPassesTestMixin
+from django.core.exceptions import PermissionDenied
 from django.forms import ModelForm
+from django.http.response import HttpResponseRedirect
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView, UpdateView
+from django.views.generic import (
+    CreateView,
+    DeleteView,
+    DetailView,
+    ListView,
+    UpdateView,
+)
 
 from ..models.document import Document
 
@@ -29,3 +40,24 @@ class DocumentListView(ListView):
     model = Document
     template_name = "core/index.html"
     context_object_name = "documents"
+
+
+class DocumentDetailView(DetailView):
+    pass
+
+
+class DocumentDeleteView(UserPassesTestMixin, DeleteView):
+    model = Document
+    context_object_name = "document"
+    template_name = "core/delete_document.html"
+    success_url = reverse_lazy("home")
+
+    def test_func(self) -> bool | None:
+        document = self.get_object()
+        return self.request.user == document.author
+
+    def handle_no_permission(self) -> HttpResponseRedirect:
+        messages.error(
+            self.request, f"Login first to delete {self.get_object()} !"
+        )
+        return redirect("home")
