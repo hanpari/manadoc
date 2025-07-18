@@ -3,24 +3,24 @@
 {% block content %}
   <h1>Controlled documentation</h1>
 
-  {% for document in documents %}
-  <ul>
-    <li>
-      <p>
-        {{document.title}} by {{document.author | capfirst}} 
-        <a href="{% url 'update_document' document.pk %}"> Edit </a>
-        <a href="{% url 'delete_document' document.pk %}"> Delete </a>
-      </p>
-    </li>
+  {% if user.is_authenticated %}
+    {% for document in documents %}
+      <ul>
+        <li>
+          <p>
+            {{ document.title }} by {{ document.author|capfirst }}
+            <a href="{% url 'update_document' document.pk %}">Edit</a>
+            <a href="{% url 'delete_document' document.pk %}">Delete</a>
+          </p>
+        </li>
+      </ul>
+    {% empty %}
+      <p>No documents</p>
+    {% endfor %}
+  {% else %}
+    <p>Be sure to log in first!</p>
+  {% endif %}
 
-  </ul>
-
-  {% empty %}
-    <p>No documents</p>
-  {% endfor %}
-
-  <br>
- <a href="{% url 'create_document' %}">Create</a>
-
-
+  <br />
+  <a href="{% url 'create_document' %}">Create</a>
 {% endblock %}

@@ -12,4 +12,4 @@ alias pmsq="python manage.py sqlmigrate"
 alias pmsql="python manage.py dbshell"
 
 # Miscellaneous aliases
-alias pcra="pre-commit run --all-files"
+alias pcra="clear && pre-commit run --all-files"
