@@ -17,7 +17,7 @@ Including another URLconf
 
 from django import template
 from django.contrib import admin
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 
 from core import views
@@ -44,5 +44,6 @@ urlpatterns = [
         LoginView.as_view(template_name="core/login.html"),
         name="login",
     ),
+    path("logout", LogoutView.as_view(next_page="login"), name="logout"),
     path("admin/", admin.site.urls),
 ]

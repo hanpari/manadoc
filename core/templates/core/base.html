@@ -7,10 +7,21 @@
   <body>
     {% if user.is_authenticated %}
       Logged as {{ user.username }}
+      <form method="post" action="{% url 'logout'%}">
+        {% csrf_token %}
+        <button type="submit">Logout</button> 
+      </form>
     {% else %}
       Login <a href="{% url 'login' %}">here</a>
     {% endif %}
+    <br />
+    {% if messages %}
+      {% for message in messages %}
+        {{ message }}
+      {% endfor %}
+    {% endif %}
 
+    <br />
     {% block content %}
       <h1>Welcome to the Documentation</h1>
     {% endblock %}

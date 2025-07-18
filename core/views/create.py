@@ -1,7 +1,8 @@
 from django.contrib import messages
-from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.exceptions import PermissionDenied
 from django.forms import ModelForm
+from django.http import HttpResponse
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
@@ -19,14 +20,22 @@ from ..models.document import Document
 class DocumentForm(ModelForm):
     class Meta:
         model = Document
-        fields = ['title', 'content', "author"]
+        fields = ['title', 'content']
 
 
-class DocumentCreateView(CreateView):
+class DocumentCreateView(LoginRequiredMixin, CreateView):
     model = Document
     form_class = DocumentForm
     success_url = reverse_lazy("home")
     template_name = "core/create_document.html"
+
+    def handle_no_permission(self) -> HttpResponseRedirect:
+        messages.error(self.request, f"Log in first!")
+        return redirect("login")
+
+    def form_valid(self, form: DocumentForm) -> HttpResponse:
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 class DocumentUpdateView(UpdateView):

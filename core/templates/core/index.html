@@ -3,19 +3,14 @@
 {% block content %}
   <h1>Controlled documentation</h1>
 
-  {% if messages %}
-  {% for message in messages %}
-    {{message}}
-  {% endfor %}
-  {% endif %}
-
-
   {% for document in documents %}
   <ul>
     <li>
-      {{document.title}}
-      <a href="{% url 'update_document' document.pk %}"> Edit </a>
-      <a href="{% url 'delete_document' document.pk %}"> Delete </a>
+      <p>
+        {{document.title}} by {{document.author | capfirst}} 
+        <a href="{% url 'update_document' document.pk %}"> Edit </a>
+        <a href="{% url 'delete_document' document.pk %}"> Delete </a>
+      </p>
     </li>
 
   </ul>
