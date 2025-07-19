@@ -1,6 +1,8 @@
 from django.conf import settings
 from django.db import models
 
+user = settings.AUTH_USER_MODEL
+
 
 class Document(models.Model):
     title = models.CharField(max_length=255)
@@ -8,7 +10,10 @@ class Document(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(
-        to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE
+        to=user, on_delete=models.CASCADE, related_name="authored_documents"
+    )
+    reviewers = models.ManyToManyField(
+        to=user, related_name="reviewed_documents"
     )
 
     def __str__(self):

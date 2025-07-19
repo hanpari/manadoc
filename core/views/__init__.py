@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.forms import ModelForm
+from django.forms import ModelForm, ValidationError
 from django.http import HttpResponse
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect
@@ -19,7 +19,14 @@ from ..models.document import Document
 class DocumentForm(ModelForm):
     class Meta:
         model = Document
-        fields = ['title', 'content']
+        fields = ["title", "content", "reviewers"]
+
+    def clean_reviewers(self):
+        reviewers = self.cleaned_data.get("reviewers")
+        author = self.instance.author
+        if author in reviewers:
+            raise ValidationError("Author cant be a reviewer!")
+        return reviewers
 
 
 class DocumentCreateView(LoginRequiredMixin, CreateView):

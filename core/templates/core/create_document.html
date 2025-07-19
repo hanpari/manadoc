@@ -3,7 +3,42 @@
 {% block content %}
   Create a new documentation page<form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+
+    <div>
+      {{ form.title.label_tag }}
+      {{ form.title }}
+      {% if form.title.errors %}
+        <ul class="errorlist">
+          {% for error in form.title.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+
+    <div>
+      {{ form.content.label_tag }}
+      {{ form.content }}
+      {% if form.content.errors %}
+        <ul class="errorlist">
+          {% for error in form.content.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+
+    <div>
+      {{ form.reviewers.label_tag }}
+      {{ form.reviewers }}
+      {% if form.reviewers.errors %}
+        <ul class="errorlist">
+          {% for error in form.reviewers.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
 
     <button type="submit">Submit</button>
   </form>
